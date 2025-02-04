@@ -1,7 +1,9 @@
 package es.rafapuig.movieapp
 
 import android.app.Application
+import androidx.room.Room
 import es.rafapuig.movieapp.data.MovieRepositoryImpl
+import es.rafapuig.movieapp.data.local.MoviesDatabase
 import es.rafapuig.movieapp.data.network.NetworkProvider
 import es.rafapuig.movieapp.domain.MovieRepository
 
@@ -16,7 +18,13 @@ class MovieApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        movieRepository = MovieRepositoryImpl(NetworkProvider(API_TOKEN).getMovieService())
+
+        val db = Room
+            .databaseBuilder(applicationContext, MoviesDatabase::class.java, "movies.db")
+            .build()
+
+        movieRepository = MovieRepositoryImpl(
+            NetworkProvider(API_TOKEN).getMovieService(), db.movieDao())
     }
 
 }
