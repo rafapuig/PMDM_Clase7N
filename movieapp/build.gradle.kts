@@ -5,7 +5,11 @@ plugins {
 
 android {
     namespace = "es.rafapuig.movieapp"
-    compileSdk = 34
+    compileSdk = 35
+
+    buildFeatures {
+        viewBinding = true
+    }
 
     defaultConfig {
         applicationId = "es.rafapuig.movieapp"
@@ -37,7 +41,6 @@ android {
 
 dependencies {
 
-    implementation(libs.appcompat.v7)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
@@ -54,4 +57,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:5.0.0-rc01")
 }

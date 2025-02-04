@@ -1,6 +1,6 @@
 package es.rafapuig.movieapp
 
-import es.rafapuig.movieapp.data.MovieRepository
+import es.rafapuig.movieapp.data.MovieRepositoryImpl
 import es.rafapuig.movieapp.data.network.NetworkProvider
 import org.junit.Test
 
@@ -24,7 +24,7 @@ class ExampleUnitTest {
 
         val service = provider.getMovieService()
 
-        val repository = MovieRepository(service)
+        val repository = MovieRepositoryImpl(service)
 
 
 

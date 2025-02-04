@@ -9,8 +9,9 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import es.rafapuig.movieapp.MovieApplication
-import es.rafapuig.movieapp.data.MovieRepository
-import es.rafapuig.movieapp.data.network.model.Movie
+
+import es.rafapuig.movieapp.domain.MovieRepository
+import es.rafapuig.movieapp.domain.model.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

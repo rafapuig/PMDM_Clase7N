@@ -1,8 +1,9 @@
 package es.rafapuig.movieapp
 
 import android.app.Application
-import es.rafapuig.movieapp.data.MovieRepository
+import es.rafapuig.movieapp.data.MovieRepositoryImpl
 import es.rafapuig.movieapp.data.network.NetworkProvider
+import es.rafapuig.movieapp.domain.MovieRepository
 
 class MovieApplication : Application() {
 
@@ -15,7 +16,7 @@ class MovieApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        movieRepository = MovieRepository(NetworkProvider(API_TOKEN).getMovieService())
+        movieRepository = MovieRepositoryImpl(NetworkProvider(API_TOKEN).getMovieService())
     }
 
 }
