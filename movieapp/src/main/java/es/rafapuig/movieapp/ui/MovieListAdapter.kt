@@ -2,6 +2,8 @@ package es.rafapuig.movieapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -20,16 +22,20 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(DI
         ) {
 
 
-        private val binding = ItemMovieListBinding.bind(itemView)
+        //private val binding = ItemMovieListBinding.bind(itemView)
+
+        private val movieTitle : TextView = itemView.findViewById(R.id.movie_title)
+        //private val movieTitle: TextView = binding.movieTitle
+        private val moviePoster : ImageView = itemView.findViewById(R.id.movie_poster)
+        //private val moviePoster: ImageView = binding.moviePoster
 
         fun bindTo(movie: Movie) {
-            binding.movieTitle.text = movie.title
-
+            movieTitle.text = movie.title
             Glide.with(parent.context)
                 .load(movie.posterURL)
                 .placeholder(R.mipmap.ic_launcher)
                 .fitCenter()
-                .into(binding.moviePoster)
+                .into(moviePoster)
         }
 
     }
@@ -39,20 +45,13 @@ class MovieListAdapter : ListAdapter<Movie, MovieListAdapter.MovieViewHolder>(DI
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        //val layoutInflater = LayoutInflater.from(parent.context)
         return MovieViewHolder(parent)
     }
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Movie>() {
-            override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-                return oldItem.id == newItem.id
-            }
-
-            override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-                return oldItem == newItem
-            }
-
+            override fun areContentsTheSame(oldItem: Movie, newItem: Movie) = oldItem == newItem
+            override fun areItemsTheSame(oldItem: Movie, newItem: Movie) = oldItem.id == newItem.id
         }
     }
 }
