@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private val movieAdapter by lazy { MovieAdapter() }
 
+    private val movieListAdapter by lazy { MovieListAdapter() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,12 +32,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        binding.movieList.adapter = movieAdapter
+        //binding.movieList.adapter = movieAdapter
+        binding.movieList.adapter = movieListAdapter
 
         viewModel.fetchMovies()
 
         viewModel.movies.observe(this) { movies ->
-            movieAdapter.addMovies(movies)
+            //movieAdapter.addMovies(movies)
+            movieListAdapter.submitList(movies)
         }
 
         viewModel.loading.observe(this) { isLoading ->

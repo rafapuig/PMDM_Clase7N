@@ -8,6 +8,7 @@ import es.rafapuig.movieapp.R
 import es.rafapuig.movieapp.databinding.ItemMovieListBinding
 import es.rafapuig.movieapp.domain.model.Movie
 
+
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(private val binding: ItemMovieListBinding) :

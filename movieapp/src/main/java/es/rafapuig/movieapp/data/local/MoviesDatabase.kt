@@ -8,4 +8,6 @@ import es.rafapuig.movieapp.data.local.entity.MovieEntity
 @Database(entities = [MovieEntity::class], version = 1)
 abstract class MoviesDatabase : RoomDatabase() {
     abstract fun movieDao() : MovieDao
+
+    //abstract val moviesDao : MovieDao
 }
